@@ -8,9 +8,11 @@ import google.generativeai as genai
 import os
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from dotenv import load_dotenv
 
-# Set up Gemini API key
-genai.configure(api_key="AIzaSyBwzbuL30EsbczQb9rWyBFVGB9S2rKG5y4")
+load_dotenv()
+GENAI_API_KEY = os.getenv("GENAI_API_KEY")
+genai.configure(api_key=GENAI_API_KEY)
 
 # Initialize FastAPI
 app = FastAPI()
