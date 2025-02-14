@@ -1,16 +1,8 @@
-import google.generativeai as genai
-import config
+from decouple import config
+import os
 
-# Gemini API Key
-GENAI_API_KEY = "AIzaSyBwzbuL30EsbczQb9rWyBFVGB9S2rKG5y4"
+class Settings:
+    GENAI_API_KEY: str = os.getenv("GENAI_API_KEY", config("GENAI_API_KEY", default=""))
 
-# PostgreSQL Database URL
-DATABASE_URL = "postgresql://postgres:12345@localhost/chatbot_db"
-
-# Upload Folder Path
-UPLOAD_FOLDER = r"C:\Users\amrap\Desktop\Chatbot_Data"
-
-# Configure Gemini API
-genai.configure(api_key=GENAI_API_KEY)
-
+settings = Settings()
 
